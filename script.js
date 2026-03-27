@@ -1,75 +1,68 @@
-// ================= JS (script.js) =================
+function criarPagina() {
+  abrirLink("https://wa.me/5519983515922");
+}
 
-const CONFIG = {
-  name: "Bianca Rodrigues",
-  role: "Vendedora",
-  bio: "Moda feita pra você.",
-  photo: "bibi.png",
-  links: [
-    { icon: "📱", label: "WhatsApp", url: "https://wa.me/5519983515922" },
-    { icon: "📸", label: "Instagram", url: "https://www.instagram.com/jamarcosmopolis?igsh=MXJzdm12Z2ViZGl0eQ==" },
-  // render  { icon: "💼", label: "LinkedIn", url: "https://linkedin.com" },
-    { icon: "✉️", label: "E-mail", url: "mailto:biancarodriguesmelo06@gmail.com" },
-// render{ icon: "📍", label: "Localização", url: "https://maps.google.com" },
-// render    { icon: "🌐", label: "Site", url: "https://crazyheart.netlify.app" }
-  ]
-};
+function abrirInstagram() {
+  abrirLink("https://www.instagram.com/jamarcosmopolis?igsh=MXJzdm12Z2ViZGl0eQ==");
+}
 
-const topActions = document.getElementById("topActions");
+function verOutfits() {
+  animarClique();
+  setTimeout(() => {
+    alert("Aqui entra seu catálogo depois 👀");
+  }, 150);
+}
 
-// Botão salvar contato
-const saveBtn = document.createElement("div");
-saveBtn.className = "top-btn";
-saveBtn.innerHTML = "📇";
-saveBtn.onclick = downloadVCard;
-topActions.appendChild(saveBtn);
+function abrirTabela() {
+  animarClique();
+  setTimeout(() => {
+    alert("Aqui pode abrir um modal futuramente");
+  }, 150);
+}
 
-// WhatsApp e Instagram (pegando do CONFIG)
-CONFIG.links.forEach(link => {
-  if (link.label === "WhatsApp" || link.label === "Instagram") {
-    const btn = document.createElement("div");
-    btn.className = "top-btn";
-    btn.innerHTML = link.icon;
-    btn.onclick = () => window.open(link.url, "_blank");
-    topActions.appendChild(btn);
-  }
-});
+function abrirTabela() {
+  animarClique();
+  setTimeout(() => {
+    abrirLink("https://wa.me/5519999973370?text=Olá, gostaria de fazer um orçamento para gerar um foolder para mim");
+  }, 150);
+}
 
-// render
+/* FUNÇÃO PADRÃO */
+function abrirLink(url) {
+  animarClique();
+  setTimeout(() => {
+    window.open(url, "_blank");
+  }, 120);
+}
 
-document.getElementById("name").innerText = CONFIG.name;
-document.getElementById("role").innerText = CONFIG.role;
-document.getElementById("bio").innerText = CONFIG.bio;
-document.getElementById("photo").src = CONFIG.photo;
+/* MICRO ANIMAÇÃO */
+function animarClique() {
+  document.body.style.transform = "scale(0.98)";
+  setTimeout(() => {
+    document.body.style.transform = "scale(1)";
+  }, 100);
+}
 
-const linksContainer = document.getElementById("links");
-CONFIG.links.forEach(link => {
-  const a = document.createElement("a");
-  a.href = link.url;
-  a.className = "link";
-  a.target = "_blank";
-  a.innerHTML = `<div>${link.icon}</div><span>${link.label}</span>`;
-  linksContainer.appendChild(a);
-});
+function abrirWhats() {
+  abrirLink("https://wa.me/5519983515922");
+}
 
-function downloadVCard() {
-  const vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:${CONFIG.name}\nTITLE:${CONFIG.role}\nEND:VCARD`;
-  const blob = new Blob([vcard], { type: "text/vcard" });
-  const url = URL.createObjectURL(blob);
+function salvarContato() {
+  const contato = `
+BEGIN:VCARD
+VERSION:3.0
+FN:Bianca Rodrigues
+TEL;TYPE=CELL:19983515922
+END:VCARD
+  `;
+
+  const blob = new Blob([contato], { type: "text/vcard" });
+  const url = window.URL.createObjectURL(blob);
+
   const a = document.createElement("a");
   a.href = url;
   a.download = "contato.vcf";
   a.click();
-}
 
-function shareProfile() {
-  if (navigator.share) {
-    navigator.share({
-      title: CONFIG.name,
-      text: CONFIG.bio,
-      url: window.location.href
-    });
-  } else {
-    alert("Compartilhamento não suportado");
-  }
+  window.URL.revokeObjectURL(url);
 }
