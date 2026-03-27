@@ -7,9 +7,9 @@
   height: 100%;
   z-index: -1;
 
-  background: url('jamar.png') center/cover no-repeat;
-  filter: blur(0.0000005px); /* mais suave */
-  transform: scale(1.5); /* menos zoom = mais nítido */
+  background: url('crazy.png') center/cover no-repeat;
+  filter: blur(4px); /* blur mais leve evita bug em mobile */
+  transform: scale(1.05); /* escala mínima */
 }
 
 /* overlay escuro */
@@ -17,8 +17,10 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(2, 6, 23, 0.7);
+  background: rgba(2,6,23,0.4); 
+  backdrop-filter: blur(4px); /* blur consistente em mobile */
 }
+
 :root {
   --primary: #ffffff;
   --secondary: #94a3b8;
