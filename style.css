@@ -5,7 +5,6 @@
   font-family: 'Inter', sans-serif;
 }
 
-/* REMOVE EFEITO AZUL NO CELULAR */
 button {
   -webkit-tap-highlight-color: transparent;
 }
@@ -61,7 +60,7 @@ body {
   margin-bottom: 25px;
 }
 
-/* TOPO - BOTÕES */
+/* TOPO */
 .top-actions {
   display: flex;
   gap: 8px;
@@ -80,7 +79,6 @@ body {
   transition: all 0.25s ease;
 }
 
-/* HOVER */
 .top-actions button:hover {
   transform: translateY(-3px);
   background: rgba(255,255,255,0.08);
@@ -108,14 +106,13 @@ body {
   backdrop-filter: blur(5px);
 }
 
-/* HOVER PREMIUM */
 .btn:hover {
   transform: translateY(-3px);
   background: rgba(255,255,255,0.06);
   box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
-/* BOTÃO PRINCIPAL */
+/* PRINCIPAL */
 .btn.primary {
   background: linear-gradient(135deg, #ff2e63, #ff4d7a);
   border: none;
@@ -151,34 +148,38 @@ footer {
   }
 }
 
-/* RESPONSIVO (CELULAR) */
+/* 🔥 CORREÇÃO REAL DO MOBILE */
 @media (max-width: 480px) {
 
+  body {
+    align-items: center; /* mantém centralizado igual PC */
+  }
+
+  .container {
+    max-width: 380px;
+  }
+
   .card {
-    padding: 22px 15px;
-    border-radius: 18px;
+    padding: 25px 18px;
+    border-radius: 22px;
   }
 
   .profile img {
-    width: 85px;
-    height: 85px;
+    width: 90px;
+    height: 90px;
   }
 
   .profile h1 {
-    font-size: 18px;
-  }
-
-  .profile p {
-    font-size: 13px;
+    font-size: 19px;
   }
 
   .btn {
-    padding: 16px;
+    padding: 17px;
     font-size: 16px;
   }
 
   .top-actions button {
-    font-size: 20px;
-    padding: 16px 0;
+    padding: 15px 0;
+    font-size: 19px;
   }
 }
